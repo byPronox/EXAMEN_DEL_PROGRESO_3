@@ -10,6 +10,31 @@ typedef struct {
     float promedio;
 } Estudiante;
 
+void mayormenorestudiante(Estudiante* students, int numEstudiantes) {
+    int i, j;
+    Estudiante temp;
+
+    for (i = 0; i < numEstudiantes - 1; i++) {
+        for (j = 0; j < numEstudiantes - i - 1; j++) {
+            if (students[j].promedio < students[j + 1].promedio) {
+                temp = students[j];
+                students[j] = students[j + 1];
+                students[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void calculapromedio(Estudiante* students, int numEstudiantes) {
+    for (int i = 0; i < numEstudiantes; i++) {
+        float sum = 0;
+        for (int j = 0; j < 3; j++) {
+            sum += students[i].notas[j];
+        }
+        students[i].promedio = sum / 3.0;
+    }
+}
+
 void mayormenorestudiante(Estudiante* students, int numEstudiantes);
 void calculapromedio(Estudiante* students, int numEstudiantes);
 
